@@ -2,18 +2,129 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Trang cá nhân</title>
-</head>
-<body>
-  <h1>TRANG WEB CÁ NHÂN</h1>
-  <p><b>Họ tên:</b> Minh Duy</p>
-  <p><b>MSSV:</b> 220901</p>
-  <p><b>Lớp:</b> CMD</p>
+  <title>Trang web cá nhân | Minh Duy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <h2>Bài tập</h2>
-  <ul>
-    <li>Bài 1</li>
-    <li>Bài 2</li>
-  </ul>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 800px;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      font-size: 36px;
+      color: #4a4a4a;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 40px;
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .info div {
+      background: #f4f6fb;
+      padding: 15px 20px;
+      border-radius: 12px;
+    }
+
+    .info span {
+      font-weight: bold;
+      color: #555;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #5a5a5a;
+    }
+
+    .links a {
+      display: block;
+      text-decoration: none;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .links a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      .info {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Trang Web Cá Nhân</h1>
+    <p class="subtitle">Nộp bài & giới thiệu sinh viên</p>
+
+    <div class="info">
+      <div><span>Họ tên:</span> Minh Duy</div>
+      <div><span>MSSV:</span> 220901</div>
+      <div><span>Lớp:</span> CMD</div>
+      <div><span>Môn học:</span> Công nghệ Web</div>
+    </div>
+
+    <h2>Bài tập / Đồ án</h2>
+    <div class="links">
+      <a href="#">📘 Bài tập 1</a>
+      <a href="#">📗 Bài tập 2</a>
+      <a href="#">📕 Đồ án cuối kỳ</a>
+    </div>
+
+    <footer>
+      © 2026 | Sinh viên CNTT
+    </footer>
+  </div>
 </body>
 </html>
