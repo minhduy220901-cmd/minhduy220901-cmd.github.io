@@ -1,130 +1,293 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Trang web cá nhân | Minh Duy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Châu Minh Duy — Blog & Portfolio</title>
+  <meta name="description" content="Blog cá nhân và portfolio của Châu Minh Duy: Unity/Game Programmer & Web Developer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, sans-serif;
+    :root{
+      --bg:#0f1216; --card:#151a21; --text:#e8edf2; --muted:#a9b4c2; --brand:#4fd1c5; --accent:#7aa2f7;
+      --border:#232a33; --link:#8be9fd; --shadow:0 10px 30px rgba(0,0,0,.35);
     }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #333;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    .container{max-width:1080px;margin:0 auto;padding:24px}
+    header{
+      position:sticky;top:0;background:linear-gradient(180deg, rgba(15,18,22,.95), rgba(15,18,22,.75));
+      backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--border);z-index:50
     }
-
-    .card {
-      background: #fff;
-      width: 100%;
-      max-width: 800px;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .avatar{
+      width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--accent));
+      box-shadow:var(--shadow)
     }
-
-    h1 {
-      text-align: center;
-      margin-top: 0;
-      font-size: 36px;
-      color: #4a4a4a;
+    .brand h1{font-size:18px;margin:0;font-weight:800;letter-spacing:.2px}
+    .nav a{margin-left:18px;font-weight:600;color:var(--muted)}
+    .nav a.active{color:var(--text)}
+    .hero{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 24px 8px
     }
-
-    .subtitle {
-      text-align: center;
-      color: #777;
-      margin-bottom: 40px;
+    .hero h2{font-size:42px;line-height:1.1;margin:0 0 12px;font-weight:800}
+    .hero p{color:var(--muted);font-size:16px;margin:0 0 18px}
+    .badge{display:inline-block;padding:8px 12px;border:1px solid var(--border);border-radius:999px;color:var(--muted);margin-right:8px}
+    .card{
+      background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)
     }
-
-    .info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 40px;
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .section{padding:28px 24px}
+    .section h3{margin:0 0 12px;font-size:22px;font-weight:800}
+    .list{display:grid;gap:10px}
+    .item{padding:12px;border:1px dashed var(--border);border-radius:12px}
+    .item h4{margin:0 0 6px;font-size:16px}
+    .muted{color:var(--muted)}
+    .mono{font-family:"JetBrains Mono",monospace}
+    .timeline{border-left:2px solid var(--border);padding-left:16px;display:grid;gap:14px}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(79,209,197,.15);margin-left:-21px;margin-bottom:-6px}
+    .footer{padding:24px;border-top:1px solid var(--border);color:var(--muted);text-align:center}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);
+      background:linear-gradient(180deg,#1a2029,#141922);color:var(--text);font-weight:700
     }
-
-    .info div {
-      background: #f4f6fb;
-      padding: 15px 20px;
-      border-radius: 12px;
-    }
-
-    .info span {
-      font-weight: bold;
-      color: #555;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #5a5a5a;
-    }
-
-    .links a {
-      display: block;
-      text-decoration: none;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      text-align: center;
-      font-weight: 600;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .links a:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 14px;
-      color: #aaa;
-    }
-
-    @media (max-width: 600px) {
-      .info {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
+    .btn:hover{transform:translateY(-1px)}
+    .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{padding:6px 10px;border-radius:999px;background:#11161d;border:1px solid var(--border);color:var(--muted);font-size:13px}
+    .contact-card{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .kbd{border:1px solid var(--border);border-radius:8px;padding:6px 8px;background:#0c1015;color:var(--muted)}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .contact-card{grid-template-columns:1fr}
     }
   </style>
 </head>
-
 <body>
-  <div class="card">
-    <h1>Trang Web Cá Nhân</h1>
-    <p class="subtitle">Nộp bài & giới thiệu sinh viên</p>
+  <!-- NAV -->
+  <header>
+    <nav class="nav container">
+      <div class="brand">
+        <div class="avatar" aria-hidden="true"></div>
+        <h1>Châu Minh Duy</h1>
+      </div>
+      <div>
+        <a href="#about" class="active">Giới thiệu</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#experience">Kinh nghiệm</a>
+        <a href="#projects">Dự án</a>
+        <a href="#contact">Liên hệ</a>
+      </div>
+    </nav>
+  </header>
 
-    <div class="info">
-      <div><span>Họ tên:</span> Minh Duy</div>
-      <div><span>MSSV:</span> 220901</div>
-      <div><span>Lớp:</span> CMD</div>
-      <div><span>Môn học:</span> Công nghệ Web</div>
+  <!-- HERO -->
+  <section class="hero container">
+    <div>
+      <span class="badge">Unity/Game Programmer</span>
+      <span class="badge">Web Developer</span>
+      <h2>Viết game, tối ưu hiệu năng, và kể câu chuyện bằng code.</h2>
+      <p>Tôi là Duy—đam mê gameplay 2D/3D, AI, UI, Animation và thiết kế web. Mục tiêu: hoàn thiện kỹ năng trong 1 năm, thăng tiến trưởng phòng trong 3 năm, gắn bó dài hạn.</p>
+      <div class="tags" style="margin-top:10px">
+        <span class="tag">C#</span><span class="tag">Unity</span><span class="tag">SQL</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+      </div>
+      <div style="margin-top:16px">
+        <a class="btn" href="#contact">📮 Kết nối</a>
+        <a class="btn" href="#experience">🧭 Xem hành trình</a>
+      </div>
     </div>
-
-    <h2>Bài tập / Đồ án</h2>
-    <div class="links">
-      <a href="#">📘 Bài tập 1</a>
-      <a href="#">📗 Bài tập 2</a>
-      <a href="#">📕 Đồ án cuối kỳ</a>
+    <div class="card">
+      <h3 style="margin-top:0">Sở thích & cảm hứng</h3>
+      <ul class="list">
+        <li class="item"><strong>Game:</strong> Idle, PvP</li>
+        <li class="item"><strong>Âm nhạc:</strong> Rap, guitar, piano, làm beat</li>
+        <li class="item"><strong>Phim:</strong> Anime</li>
+        <li class="item"><strong>Thói quen:</strong> Học kiến thức mới</li>
+      </ul>
     </div>
+  </section>
 
-    <footer>
-      © 2026 | Sinh viên CNTT
-    </footer>
-  </div>
+  <!-- ABOUT -->
+  <section id="about" class="section container">
+    <h3>Giới thiệu</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Học vấn</h4>
+        <ul class="list">
+          <li class="item"><strong>Đại học Nam Cần Thơ:</strong> Công nghệ thông tin</li>
+          <li class="item"><strong>Tiếng Anh:</strong> VSTEP B1</li>
+          <li class="item"><strong>Kỹ năng nghề nghiệp:</strong> Giao tiếp, ứng xử, làm việc nhóm</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Công cụ văn phòng</h4>
+        <p class="muted">Word, Excel, PowerPoint; chỉnh sửa ảnh/video cơ bản.</p>
+        <div class="tags">
+          <span class="tag">Edit ảnh</span><span class="tag">Edit video</span><span class="tag">Office</span>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Người tham chiếu</h4>
+        <p><strong>Thầy Huỳnh Văn Dũ</strong><br>Hiệu trưởng THCS Phương Phú</p>
+        <p class="mono">📞 0766 825 671<br>✉️ vandu@gmail.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section container">
+    <h3>Kỹ năng</h3>
+    <div class="grid">
+      <div class="card">
+        <h4>Game Programming</h4>
+        <ul class="list">
+          <li class="item"><strong>Unity/C#:</strong> Gameplay 2D/3D, kiến trúc component</li>
+          <li class="item"><strong>AI:</strong> State machine, pathfinding cơ bản</li>
+          <li class="item"><strong>UI & Animation:</strong> Animator, Timeline, uGUI</li>
+          <li class="item"><strong>Performance:</strong> Profiling, tối ưu GC, batching</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Web Development</h4>
+        <ul class="list">
+          <li class="item"><strong>Front-end:</strong> HTML, CSS, JavaScript</li>
+          <li class="item"><strong>Back-end:</strong> SQL (thiết kế schema, CRUD)</li>
+          <li class="item"><strong>Web layout design:</strong> Responsive, grid/flex</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Điểm mạnh cá nhân</h4>
+        <ul class="list">
+          <li class="item"><strong>Tiếp thu nhanh:</strong> học và áp dụng công nghệ mới</li>
+          <li class="item"><strong>Sáng tạo:</strong> thử nghiệm ý tưởng gameplay/UI</li>
+          <li class="item"><strong>Kỹ năng mềm:</strong> giao tiếp, ứng xử</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section container">
+    <h3>Kinh nghiệm</h3>
+    <div class="grid">
+      <div class="card">
+        <div class="timeline">
+          <div class="dot"></div>
+          <div>
+            <h4>Nhân viên phục vụ <span class="muted">| 2021</span></h4>
+            <p class="muted">Kỷ luật, tốc độ, làm việc nhóm trong môi trường dịch vụ.</p>
+          </div>
+          <div class="dot"></div>
+          <div>
+            <h4>Nhân viên bán hàng <span class="muted">| 2022</span></h4>
+            <p class="muted">Giao tiếp với khách hàng, xử lý tình huống, chịu trách nhiệm doanh số.</p>
+          </div>
+          <div class="dot"></div>
+          <div>
+            <h4>Unity Game Developer <span class="muted">| 2022–nay</span></h4>
+            <p class="muted">Phát triển gameplay, AI, UI, animation; tối ưu hiệu năng dự án.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Mục tiêu nghề nghiệp</h4>
+        <ul class="list">
+          <li class="item"><strong>1 năm:</strong> Hoàn thiện kỹ năng cốt lõi theo tiêu chuẩn công ty.</li>
+          <li class="item"><strong>3 năm:</strong> Thăng chức Trưởng phòng.</li>
+          <li class="item"><strong>Dài hạn:</strong> Gắn bó và phát triển cùng công ty.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Chứng chỉ & thành tựu</h4>
+        <p class="muted">Đang cập nhật… (thêm ảnh/chứng chỉ khi có)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section container">
+    <h3>Dự án tiêu biểu</h3>
+    <div class="grid">
+      <article class="card">
+        <h4>Idle Arena (Prototype)</h4>
+        <p class="muted">Hệ thống chiến đấu tự động, nâng cấp nhân vật, PvP cơ bản.</p>
+        <div class="tags">
+          <span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Addressables</span>
+        </div>
+      </article>
+      <article class="card">
+        <h4>2D Platformer Kit</h4>
+        <p class="muted">Bộ khung di chuyển, combat, AI kẻ địch, UI HUD.</p>
+        <div class="tags">
+          <span class="tag">Unity</span><span class="tag">Cinemachine</span><span class="tag">Animator</span>
+        </div>
+      </article>
+      <article class="card">
+        <h4>Portfolio Web</h4>
+        <p class="muted">Thiết kế layout responsive, tối ưu SEO cơ bản.</p>
+        <div class="tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section container">
+    <h3>Liên hệ</h3>
+    <div class="contact-card">
+      <div class="card">
+        <h4>Thông tin</h4>
+        <p class="mono">📞 0778 151 391<br>✉️ minhduy220901@gmail.com<br>📍 Xã Phương Bình, TP Cần Thơ</p>
+        <p class="muted">Sẵn sàng hợp tác freelance hoặc full-time.</p>
+      </div>
+      <div class="card">
+        <h4>Gửi tin nhắn</h4>
+        <form class="list" onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Tôi sẽ phản hồi sớm.');">
+          <label class="item">
+            <span class="muted">Tên của bạn</span>
+            <input type="text" required placeholder="Nguyễn Văn A" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0c1015;color:var(--text)">
+          </label>
+          <label class="item">
+            <span class="muted">Email</span>
+            <input type="email" required placeholder="ban@vidu.com" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0c1015;color:var(--text)">
+          </label>
+          <label class="item">
+            <span class="muted">Nội dung</span>
+            <textarea rows="4" required placeholder="Mình muốn trao đổi về dự án…" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#0c1015;color:var(--text)"></textarea>
+          </label>
+          <button class="btn" type="submit">Gửi</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:8px">
+        <span class="kbd">Idle</span><span class="kbd">PvP</span><span class="kbd">Rap</span><span class="kbd">Anime</span><span class="kbd">Học mới</span>
+      </div>
+      <small>© <span id="y"></span> Châu Minh Duy — Code kể chuyện, game kết nối cảm xúc.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Năm hiện tại
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Cuộn mượt
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href').slice(1);
+        const el=document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); }
+      });
+    });
+  </script>
 </body>
 </html>
